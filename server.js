@@ -50,4 +50,4 @@ app.delete('/api/notes/:id', (req, res) => {
     res.status(201).json(newNotesArray);
 })
 
-app.listen(PORT, () => console.log(`Listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
