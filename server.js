@@ -1,6 +1,7 @@
+// Initializing important variables 
 const express = require('express');
 const fs = require('fs');
-const PORT = 3001;
+const port = process.env.PORT || 3001;
 const path = require('path');
 const app = express();
 
@@ -37,8 +38,8 @@ app.post('/api/notes', (req, res) => {
     } else {
         res.status(500).json('Error in posting note')
     }
+});
 
-})
 app.delete('/api/notes/:id', (req, res) => {
     const notesArray = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
     const noteId = req.params.id;
@@ -49,4 +50,4 @@ app.delete('/api/notes/:id', (req, res) => {
     res.status(201).json(newNotesArray);
 })
 
-app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Listening at http://localhost:${port}`));
